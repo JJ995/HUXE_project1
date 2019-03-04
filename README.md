@@ -1,5 +1,12 @@
 # project
 
+## Project topic
+!!! TBD !!!
+
+## Project members
+Daniel Dietrich (S1810629015)
+Jakob Januschkowetz (S1810629014)
+
 ## Project setup
 ```
 npm install
