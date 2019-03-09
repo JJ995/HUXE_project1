@@ -1,7 +1,12 @@
 # project
 
 ## Project topic
-!!! TBD !!!
+Pen & Paper Character Sheet/Editor
+
+We want to make an easy to use and good looking character sheet/editor to help the players with their adventure.
+It isn't decided yet which P&P system we want to use in the background, but the user should be able to control 
+all their stats and items on this page. Changes on their attributes also influence other values which get updated dynamically.
+
 
 ## Project members
 Daniel Dietrich (S1810629015)
