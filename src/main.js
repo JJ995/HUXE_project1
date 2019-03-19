@@ -4,10 +4,14 @@ import router from './router'
 import store from './store'
 import './registerServiceWorker'
 
-Vue.config.productionTip = false
+// Authentication plugin
+import AuthPlugin from "./plugins/auth";
+Vue.use(AuthPlugin);
+
+Vue.config.productionTip = false;
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+    router,
+    store,
+    render: h => h(App)
 }).$mount('#app');

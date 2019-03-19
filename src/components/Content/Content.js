@@ -12,6 +12,6 @@ export default {
     methods: {
         saySomething() {
             alert(`Hello ${this.name}! You've clicked me: ${this.count++} times...`);
-        },
+        }
     }
 }
