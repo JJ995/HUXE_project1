@@ -1,6 +1,6 @@
 module.exports = {
   pwa: {
-    name: 'JDCC',
+    name: 'DJCC',
     themeColor: '#e1b400'
   },
 
