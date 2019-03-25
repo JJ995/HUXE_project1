@@ -4,7 +4,7 @@
         <div class="login__wrapper">
             <div class="login__box">
                 <button type="button"
-                        class="login__button"
+                        class="login__button border-button"
                         @click.prevent="login"
                         @mouseover="loginHover = true"
                         @mouseleave="loginHover = false">

@@ -1,0 +1,50 @@
+@import "../../styles/variables";
+
+.character-select {
+
+    background: @medium-gray;
+    color: white;
+    overflow: auto;
+    min-height: calc(~"100vh - 100px");
+
+    @media @min-md {
+        width: 50%;
+    }
+
+    &__headline {
+        font-weight: 300;
+        margin: 30px 20px;
+    }
+
+    &__list {
+        list-style-type: none;
+        margin: 20px;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    &__list-item {
+        margin: 10px;
+    }
+
+    &__button {
+        width: 100px;
+        height: 100px;
+
+        @media @min-xs {
+            width: 140px;
+            height: 140px;
+        }
+
+        &:hover:before, &:hover:after {
+            border-color: @theme-color;
+        }
+    }
+
+    &__button-text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

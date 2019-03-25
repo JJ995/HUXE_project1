@@ -1,17 +1,14 @@
 <template>
     <div class="header">
-        <h1>{{ msg }}</h1>
-        <ul>
-            <li>
-                <router-link to="/">Home</router-link>
-            </li>
-            <li v-if="isAuthenticated">
-                <router-link to="/profile">Profile</router-link>
-            </li>
-            <li v-if="isAuthenticated">
-                <a href="#" @click.prevent="logout">Log out</a>
-            </li>
-        </ul>
+        <div class="header__logo">
+            <router-link to="/" class="header__logo-link">
+                <img src="../../assets/logo.svg" alt="DJCC Logo">
+                <h1 class="header__title">DJCC</h1>
+            </router-link>
+        </div>
+        <span v-if="isAuthenticated" class="header__logout">
+            <a href="#" class="standard-link" @click.prevent="logout">Log out</a>
+        </span>
     </div>
 </template>
 

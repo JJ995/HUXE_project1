@@ -57,56 +57,9 @@
     }
 
     &__button {
-        background: transparent;
-        color: @light-gray;
-        font-family: @font-family-base;
-        font-size: 1.2em;
-        font-weight: 300;
-        border: 2px solid @light-gray;
-        display: inline-block;
-        padding: 0.5em 1em;
-        text-align: center;
-        cursor: pointer;
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-
-        transition: all 0.3s ease;
-
-        &:hover, &:focus {
-            border-color: white;
-            background-color: white;
-            color: @dark-gray;
-            outline: none;
-        }
-
-        &:before, &:after {
-            content: '';
-            border: solid @light-gray;
-            display: block;
-            position: absolute;
-            box-sizing: border-box;
-            width: 1em;
-            height: 1em;
-            transition: all 0.3s ease;
-        }
-        &:before {
-            top: -6px;
-            left: -6px;
-            border-width: 2px 0 0 2px;
-            z-index: 5;
-        }
-        &:after {
-            bottom: -6px;
-            right: -6px;
-            border-width: 0 2px 2px 0;
-        }
-
-        &:hover:before, &:hover:after {
-            width: calc(~"100% + 12px");
-            height: calc(~"100% + 12px");
-            border-color: white;
-        }
     }
 }

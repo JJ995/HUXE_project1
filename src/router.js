@@ -2,9 +2,8 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import AuthService from './auth/authService';
 
-import Home from './views/Home.vue';
+import Home from './views/Home/Home.vue';
 import Login from './views/Login.vue';
-import Profile from "./views/Profile.vue";
 import Callback from './components/Callback/Callback';
 
 Vue.use(Router);
@@ -33,18 +32,6 @@ const router = new Router({
             path: '/callback',
             name: 'callback',
             component: Callback
-        },
-        {
-            path: "/profile",
-            name: "profile",
-            component: Profile,
-            beforeEnter: (to, from, next) => {
-                if (AuthService.isAuthenticated()) {
-                    next();
-                } else {
-                    next('/login');
-                }
-            }
         }
     ]
 });
