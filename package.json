@@ -5,17 +5,13 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "apollo": "vue-cli-service apollo:watch",
-    "apollo:run": "vue-cli-service apollo:run"
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "apollo-cache-inmemory": "^1.5.1",
+    "apollo-link-http": "^1.5.14",
     "auth0-js": "^9.10.0",
-    "graphql-type-json": "^0.2.1",
-    "lowdb": "^1.0.0",
-    "mkdirp": "^0.5.1",
     "register-service-worker": "^1.6.2",
-    "shortid": "^2.2.8",
     "vue": "^2.6.6",
     "vue-apollo": "^3.0.0-beta.11",
     "vue-router": "^3.0.1",
@@ -45,15 +41,7 @@
       "plugin:vue/essential",
       "eslint:recommended"
     ],
-    "rules": {
-      "graphql/template-strings": [
-        "error",
-        {
-          "env": "literal",
-          "projectName": "app"
-        }
-      ]
-    },
+    "rules": {},
     "parserOptions": {
       "parser": "babel-eslint"
     },

@@ -11,6 +11,17 @@
     import Header from "../components/Header/Header.vue";
     import Content from "../components/Content/Content.vue";
     import Footer from "../components/Footer/Footer.vue";
+    import gql from 'graphql-tag';
+
+    export const characters = gql`query characters{
+  characters {
+    accName,
+    name,
+    class,
+    race
+  }
+}`;
+
 
     export default {
         name: 'home',
@@ -18,6 +29,16 @@
             Header,
             Content,
             Footer
+        },
+        data: () => ({
+            loading: 0,
+            characters: null
+        }),
+        apollo: {
+            $loadingKey: 'loading',
+            characters: {
+                query: characters
+            }
         }
     }
 </script>
