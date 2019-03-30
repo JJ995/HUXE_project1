@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import AuthService from './auth/authService';
 
 import Home from './views/Home/Home.vue';
+import CharacterForm from './views/CharacterForm.vue';
 import Login from './views/Login.vue';
 import Callback from './components/Callback/Callback';
 
@@ -15,6 +16,18 @@ const router = new Router({
             path: '/',
             name: 'home',
             component: Home,
+            beforeEnter: (to, from, next) => {
+                if (AuthService.isAuthenticated()) {
+                    next();
+                } else {
+                    next('/login');
+                }
+            }
+        },
+        {
+            path: '/create',
+            name: 'createCharacter',
+            component: CharacterForm,
             beforeEnter: (to, from, next) => {
                 if (AuthService.isAuthenticated()) {
                     next();

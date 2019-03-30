@@ -3,6 +3,19 @@
 .home {
 
     &__content {
-        display: flex;
+        @media @min-md {
+            display: flex;
+        }
+    }
+
+    &__split-container {
+        position: relative;
+        width: 100%;
+        min-height: 50vh;
+
+        @media @min-md {
+            width: 50%;
+            min-height: calc(~"100vh - 100px");
+        }
     }
 }

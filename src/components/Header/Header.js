@@ -1,11 +1,9 @@
 export default {
     name: 'Header',
-    props: {
-        msg: String
-    },
     data() {
         return {
-            isAuthenticated: this.$auth.isAuthenticated()
+            isAuthenticated: this.$auth.isAuthenticated(),
+            profile: this.$auth.profile
         };
     },
     async created() {

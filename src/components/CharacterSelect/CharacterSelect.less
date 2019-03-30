@@ -5,15 +5,11 @@
     background: @medium-gray;
     color: white;
     overflow: auto;
-    min-height: calc(~"100vh - 100px");
-
-    @media @min-md {
-        width: 50%;
-    }
 
     &__headline {
         font-weight: 300;
-        margin: 30px 20px;
+        padding: 30px 20px;
+        margin: 0;
     }
 
     &__list {
@@ -46,5 +42,17 @@
     &__button-text {
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+
+    &__empty {
+        text-align: center;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+
+        @media @min-xs {
+            font-size: 1.6em;
+        }
     }
 }

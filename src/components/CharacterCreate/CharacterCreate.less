@@ -1,0 +1,40 @@
+@import "../../styles/variables";
+
+.character-create {
+
+    background: @light-gray;
+    color: white;
+
+    &__headline {
+        font-weight: 300;
+        padding: 30px 20px;
+        margin: 0;
+        text-align: right;
+        color: @dark-gray;
+    }
+
+    &__button {
+        width: 200px;
+        height: 100px;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        &:hover, &:focus {
+            color: @theme-color;
+        }
+
+        @media @min-xs {
+            width: 280px;
+            height: 140px;
+        }
+    }
+
+    &__button-text {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}

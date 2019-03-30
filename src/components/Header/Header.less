@@ -55,11 +55,20 @@
         transition: all .3s ease;
     }
 
-    &__logout {
+    &__profile {
         position: relative;
         float: right;
         margin-right: 25px;
         top: 50%;
         transform: translateY(-50%);
+        display: flex;
+        color: @light-gray;
+    }
+    &__profile-name {
+        margin-right: 10px;
+        max-width: 10vw;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 }

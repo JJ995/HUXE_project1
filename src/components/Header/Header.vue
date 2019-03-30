@@ -6,7 +6,8 @@
                 <h1 class="header__title">DJCC</h1>
             </router-link>
         </div>
-        <span v-if="isAuthenticated" class="header__logout">
+        <span v-if="isAuthenticated" class="header__profile">
+            <span class="header__profile-name">{{ profile.name }}</span>
             <a href="#" class="standard-link" @click.prevent="logout">Log out</a>
         </span>
     </div>
