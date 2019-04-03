@@ -1,0 +1,117 @@
+[
+  {
+    "name": "Dragonborn",
+    "description": "Dragonborn look very much like dragons standing erect in humanoid form, through they lack wings or a tail.",
+    "mainTraits": [
+      {
+        "name": "Strength",
+        "value": 2
+      },
+      {
+        "name": "Charisma",
+        "value": 1
+      }
+    ],
+    "additionalTraits": "Draconic Ancestry, Damage Resistance"
+  },
+  {
+    "name": "Dwarf",
+    "description": "Bold and hardy, dwarves are known as skilled warriors, miners and workers of stone and metal.",
+    "mainTraits": [
+      {
+        "name": "Constitution",
+        "value": 2
+      }
+    ],
+    "additionalTraits": "Darkvision, Dwarven Combat Training, Stonecunning"
+  },
+  {
+    "name": "Elf",
+    "description": "Elves are a magical people of otherworldly grace, living in the world but not entirely part of it.",
+    "mainTraits": [
+      {
+        "name": "Dexterity",
+        "value": 2
+      }
+    ],
+    "additionalTraits": "Darkvision, Keen Senses"
+  },
+  {
+    "name": "Gnome",
+    "description": "A gnome's energy and enthusiasm for living shines through every inch of his or her tiny body.",
+    "mainTraits": [
+      {
+        "name": "Intelligence",
+        "value": 2
+      }
+    ],
+    "additionalTraits": "Darkvision"
+  },
+  {
+    "name": "Half-Elf",
+    "description": "Half-elves combine what some say are the best qualities of their elf and human parents.",
+    "mainTraits": [
+      {
+        "name": "Charisma",
+        "value": 2
+      }
+    ],
+    "additionalTraits": "Darkvision"
+  },
+  {
+    "name": "Halfling",
+    "description": "The diminutive halflings survive in a world full of larger creatures by avoiding notice or, barring that, avoiding offence.",
+    "mainTraits": [
+      {
+        "name": "Dexterity",
+        "value": 2
+      }
+    ],
+    "additionalTraits": "Lucky, Brave, Halfling Nimbleness"
+  },
+  {
+    "name": "Half-Orc",
+    "description": "Half-orcs grayish pigmentation, sloping foreheads, jutting jaws, prominent teeth and towering builds make their orcish heritage plain for all to see.",
+    "mainTraits": [
+      {
+        "name": "Strength",
+        "value": 2
+      },
+      {
+        "name": "Constitution",
+        "value": 1
+      }
+    ],
+    "additionalTraits": "Darkvision, Relentless, Endurance"
+  },
+  {
+    "name": "Human",
+    "description": "Humans are the most adaptable and ambitious people among the common races. Whatever drives them, humans are the innovators, the achievers and the pioneers of the worlds.",
+    "mainTraits": [
+      {
+        "name": "Wisdom",
+        "value": 1
+      },
+      {
+        "name": "Charisma",
+        "value": 1
+      }
+    ],
+    "additionalTraits": ""
+  },
+  {
+    "name": "Tiefling",
+    "description": "To be greeted with stares and whispers, to suffer violence and insult on the street, to see mistrust and fear in every eye: this is the lot of the Tiefling.",
+    "mainTraits": [
+      {
+        "name": "Intelligence",
+        "value": 1
+      },
+      {
+        "name": "Charisma",
+        "value": 2
+      }
+    ],
+    "additionalTraits": "Darkvision, Hellish Resistance"
+  }
+]

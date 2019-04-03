@@ -1,12 +1,12 @@
 export default {
     name: 'Login',
-    data() {
+    data () {
         return {
             loginHover: false,
         };
     },
     methods: {
-        login() {
+        login () {
             this.$auth.login();
         }
     }

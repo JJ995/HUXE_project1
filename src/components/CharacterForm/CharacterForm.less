@@ -18,4 +18,234 @@
         color: @theme-color;
         font-size: 2em;
     }
+
+    &__step-button {
+        margin-left: 20px;
+    }
+    &__step-button--finish {
+        &:hover:before, &:hover:after {
+            border-color: @theme-color;
+        }
+    }
+
+    // Steps
+    &__step-container {
+        margin: 30px 0;
+
+        @media @min-sm {
+            display: flex;
+        }
+    }
+    &__step-left {
+        padding: 20px 10px;
+        display: flex;
+        overflow-y: auto;
+
+        @media @min-sm {
+            padding: 0 10px;
+            display: block;
+            width: 40%;
+            overflow: hidden;
+        }
+    }
+    &__step-right {
+        @media @min-sm {
+            width: 60%;
+        }
+    }
+
+    /* Race step */
+
+    // Buttons
+    &__race-button-container {
+        display: inline;
+        margin: 0 10px;
+
+        @media @min-sm {
+            display: block;
+            margin: 20px 0;
+        }
+    }
+    &__race-button {
+        min-width: 125px;
+
+        @media @min-sm {
+            min-width: 200px;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+    &__race-button--selected {
+        background-color: white;
+        color: @dark-gray;
+
+        &:before, &:after {
+            width: calc(~"100% + 12px");
+            height: calc(~"100% + 12px");
+            border-color: white;
+        }
+    }
+
+    // Info
+    &__race-image-container {
+        display: inline-block;
+        max-width: 250px;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 20px 0;
+
+        @media @min-sm {
+            max-width: 400px;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+
+            @media @min-sm {
+                width: auto;
+                height: 100%;
+                max-height: 400px;
+            }
+        }
+    }
+    &__race-info {
+        max-width: 500px;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* Class step */
+
+    // Buttons
+    &__class-button-wrapper {
+        display: flex;
+        overflow: hidden;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0;
+
+        @media @min-sm {
+            padding: 30px;
+        }
+    }
+    &__class-button-container {
+        display: inline-block;
+        margin: 10px;
+        width: 50px;
+        height: 50px;
+
+        @media @min-sm {
+            width: 80px;
+            height: 80px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &__class-button {
+        img {
+            border: 1px solid rgba(0, 0, 0, 0);
+            border-radius: 50%;
+            transition: all .3s ease;
+        }
+
+        &:hover, &:focus {
+            border: none;
+            outline: none;
+
+            img {
+                box-shadow: 0 0 10px 0 rgba(0, 0, 0, .7);
+
+                @media @min-sm {
+                    box-shadow: 0 0 30px 0 rgba(0, 0, 0, .7);
+                }
+                padding: 5px;
+            }
+        }
+    }
+    &__class-button--selected {
+        border: none;
+
+        img {
+            border: 1px solid rgba(255, 255, 255, 1);
+            padding: 5px;
+        }
+    }
+
+    // Info
+    &__class-info {
+        max-width: 500px;
+        display: inline-block;
+
+        @media @min-sm {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            margin-left: 50px;
+        }
+    }
+    &__class-header {
+        font-size: 1.7em;
+        font-weight: 300;
+        margin: 30px 0 10px 0;
+    }
+
+    /* Abilities step */
+
+    &__abilities-selection {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        margin: 30px 0;
+    }
+    &__ability-select {
+        max-width: 100%;
+
+        @media @min-xs {
+            max-width: 190px;
+            margin-right: 20px;
+        }
+    }
+    &__reset-abilities {
+        position: absolute;
+        top: 40px;
+        right: 30px;
+
+        img {
+            width: 15px;
+            height: 15px;
+        }
+
+        &:hover, &:focus {
+            outline: none;
+        }
+    }
+
+    // Vuetify theme overrides
+    .v-stepper__step__step.primary {
+        background-color: rgba(255, 255, 255, .5) !important;
+        border-color: rgba(255, 255, 255, .5) !important;
+    }
+    .v-input {
+        color: @theme-color !important;
+    }
+    .v-label.primary--text,
+    .v-icon.primary--text {
+        color: white !important;
+    }
+    .v-list__tile {
+        color: @theme-color !important;
+    }
+}
+
+// Vuetify theme override
+.v-list__tile.primary--text {
+    color: @theme-color !important;
 }
