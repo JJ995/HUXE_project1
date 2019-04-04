@@ -113,7 +113,7 @@
                             </button>
 
                             <!-- BEGIN Form step three -->
-                            <div class="character-form__abilities-selection">
+                            <div class="character-form__abilities-container">
                                 <v-select
                                     v-for="(ability, index) in abilities" :key=index
                                     :items="abilityValues"
@@ -122,6 +122,17 @@
                                     class="character-form__ability-select"
                                     @input="updateAbilities"></v-select>
                             </div>
+                            <div class="character-form__abilities-container">
+                                <div class="character-form__ability"
+                                     v-for="(ability, index) in selectedAbilities" :key=index>
+                                    <div class="character-form__ability-name">{{ ability.name }}</div>
+                                    Total Score: <span class="character-form__ability-value">{{ ability.totalScore }}</span><br />
+                                    Base Score: <span class="character-form__ability-value">{{ ability.baseScore }}</span><br />
+                                    Modifier: <span class="character-form__ability-value">{{ ability.modifier }}</span><br />
+                                    Racial Bonus: <span class="character-form__ability-value">+{{ ability.racialBonus }}</span><br />
+                                </div>
+                            </div>
+
                             <!-- END Form step three -->
 
                             <v-card-actions>

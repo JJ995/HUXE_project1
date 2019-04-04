@@ -55,30 +55,52 @@ export default {
             selectedAbilities: [
                 {
                     name: 'Strength',
-                    value: 0
+                    totalScore: 0,
+                    baseScore: 0,
+                    modifier: 0,
+                    racialBonus: 2,
                 },
                 {
                     name: 'Dexterity',
-                    value: 0
+                    totalScore: 0,
+                    baseScore: 0,
+                    modifier: 0,
+                    racialBonus: 0
                 },
                 {
                     name: 'Constitution',
-                    value: 0
+                    totalScore: 0,
+                    baseScore: 0,
+                    modifier: 0,
+                    racialBonus: 0
                 },
                 {
                     name: 'Intelligence',
-                    value: 0
+                    totalScore: 0,
+                    baseScore: 0,
+                    modifier: 0,
+                    racialBonus: 0
                 },
                 {
                     name: 'Wisdom',
-                    value: 0
+                    totalScore: 0,
+                    baseScore: 0,
+                    modifier: 0,
+                    racialBonus: 0
                 },
                 {
                     name: 'Charisma',
-                    value: 0
+                    totalScore: 0,
+                    baseScore: 0,
+                    modifier: 0,
+                    racialBonus: 1
                 },
             ]
         };
+    },
+    created: function () {
+        // Init total score
+        this.updateTotalScore();
     },
     methods: {
         setRace (e) {
@@ -88,6 +110,19 @@ export default {
                     break;
                 }
             }
+            // Reset racial bonus
+            for (let j = 0; j < this.selectedAbilities.length; j++) {
+                this.selectedAbilities[j].racialBonus = 0;
+            }
+            // Set new racial bonus
+            for (let i = 0; i < this.selectedRace.mainTraits.length; i++) {
+                for (let j = 0; j < this.selectedAbilities.length; j++) {
+                    if (this.selectedAbilities[j].name === this.selectedRace.mainTraits[i].name) {
+                        this.selectedAbilities[j].racialBonus = this.selectedRace.mainTraits[i].value;
+                    }
+                }
+            }
+            this.updateTotalScore();
         },
         setClass (e) {
             for (let i = 0; i < this.classes.length; i++) {
@@ -107,18 +142,46 @@ export default {
                                 this.abilityValues[j].disabled = true;
                             }
                         }
-                        this.selectedAbilities[i].value = selection.text !== '-' ? selection.text : 0;
+                        this.selectedAbilities[i].baseScore = selection.text !== '-' ? selection.text : 0;
                     }
                 }
-                window.console.log(this.selectedAbilities);
+                this.updateTotalScore();
             });
         },
         resetAbilities () {
-            for (let i = 0; i < this.abilityValues.length; i++) {
+            for (let i = 1; i < this.abilityValues.length; i++) {
                 this.abilityValues[i].disabled = false;
             }
             for (let i = 0; i < this.abilities.length; i++) {
                 this.$refs[this.abilities[i]][0].selectedItems[0] = this.abilityValues[0];
+                this.selectedAbilities[i].baseScore = 0;
+            }
+            this.updateTotalScore();
+        },
+        updateTotalScore () {
+            for (let i = 0; i < this.selectedAbilities.length; i++) {
+                this.updateModifier(i);
+                this.selectedAbilities[i].totalScore = this.selectedAbilities[i].baseScore + this.selectedAbilities[i].racialBonus + this.selectedAbilities[i].modifier;
+            }
+        },
+        updateModifier (i) {
+            switch(this.selectedAbilities[i].baseScore) {
+                case 8:
+                    this.selectedAbilities[i].modifier = -1;
+                    break;
+                case 10:
+                    this.selectedAbilities[i].modifier = 0;
+                    break;
+                case 12:
+                case 13:
+                    this.selectedAbilities[i].modifier = 1;
+                    break;
+                case 14:
+                case 15:
+                    this.selectedAbilities[i].modifier = 2;
+                    break;
+                default:
+                    this.selectedAbilities[i].modifier = 0;
             }
         }
     }
