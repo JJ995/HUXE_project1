@@ -132,15 +132,41 @@
                                     Racial Bonus: <span class="character-form__ability-value">+{{ ability.racialBonus }}</span><br />
                                 </div>
                             </div>
-
+                            <div class="character-form__ability-error-message" v-if="hasInvalidAbilities">
+                                <p>Please select a value for each ability.</p>
+                            </div>
                             <!-- END Form step three -->
 
                             <v-card-actions>
                                 <v-spacer></v-spacer>
                                 <v-btn flat @click.native="stepper = 2">Back</v-btn>
                                 <button type="button"
+                                        class="character-form__step-button border-button"
+                                        title="Continue"
+                                        @click="validateAbilities">
+                                    Continue
+                                </button>
+                            </v-card-actions>
+                        </v-stepper-content>
+                        <v-stepper-content step="4">
+                            <h2 class="character-form__headline">Name</h2>
+
+                            <!-- BEGIN Form step four -->
+                            <div class="character-form__name-container">
+                                <v-text-field
+                                    label="Please enter a name for your character:"
+                                    placeholder="Name"
+                                    v-model="characterName"></v-text-field>
+                            </div>
+                            <!-- END Form step four -->
+
+                            <v-card-actions>
+                                <v-spacer></v-spacer>
+                                <v-btn flat @click.native="stepper = 3">Back</v-btn>
+                                <button type="button"
                                         class="character-form__step-button character-form__step-button--finish border-button"
-                                        title="Continue">
+                                        title="Finish"
+                                        @click="saveCharacter">
                                     Finish
                                 </button>
                             </v-card-actions>

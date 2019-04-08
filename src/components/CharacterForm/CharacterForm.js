@@ -1,5 +1,6 @@
 import races from './../../data/races.json';
 import classes from './../../data/classes.json';
+import gql from "graphql-tag";
 
 export default {
     name: 'CharacterForm',
@@ -16,10 +17,14 @@ export default {
                 {
                     completed: false,
                 },
+                {
+                    completed: false,
+                },
             ],
             races: races,
             classes: classes,
             abilities: ['Strength', 'Dexterity', 'Constitution', 'Intelligence', 'Wisdom', 'Charisma'],
+            hasInvalidAbilities: false,
             abilityValues: [
                 {
                     text: '-',
@@ -95,7 +100,8 @@ export default {
                     modifier: 0,
                     racialBonus: 1
                 },
-            ]
+            ],
+            characterName: '',
         };
     },
     created: function () {
@@ -183,6 +189,60 @@ export default {
                 default:
                     this.selectedAbilities[i].modifier = 0;
             }
+        },
+        validateAbilities () {
+            let invalid = false;
+            for (let i = 0; i < this.selectedAbilities.length; i++) {
+                if (this.selectedAbilities[i].baseScore === 0) {
+                    invalid = true;
+                    break;
+                }
+            }
+            if (!invalid) {
+                // Go to step 4 if valid
+                this.stepper = 4;
+            } else {
+                // Show error message
+                this.hasInvalidAbilities = true;
+            }
+        },
+        saveCharacter () {
+            let that = this;
+            this.$apollo.mutate({
+                mutation: gql`
+                    mutation CreateCharacterMutation($email: String!, $name: String!, $race: String!, $class: String!, $strength: Int!, $dexterity: Int!, $constitution: Int!, $intelligence: Int!, $wisdom: Int!, $charisma: Int!) {
+                        createCharacter(
+                            data: {
+                                status: PUBLISHED,
+                                email: $email,
+                                name: $name,
+                                race: $race,
+                                class: $class,
+                                strength: $strength,
+                                dexterity: $dexterity,
+                                constitution: $constitution,
+                                intelligence: $intelligence,
+                                wisdom: $wisdom,
+                                charisma: $charisma
+                            }
+                        ) {
+                            name
+                        }
+                    }
+                `,
+                variables: {
+                    email: that.$auth.profile.email,
+                    name: that.characterName,
+                    race: that.selectedRace.name,
+                    class: that.selectedClass.name,
+                    strength: that.selectedAbilities[0].totalScore,
+                    dexterity: that.selectedAbilities[1].totalScore,
+                    constitution: that.selectedAbilities[2].totalScore,
+                    intelligence: that.selectedAbilities[3].totalScore,
+                    wisdom: that.selectedAbilities[4].totalScore,
+                    charisma: that.selectedAbilities[5].totalScore
+                }
+            });
         }
     }
 }
