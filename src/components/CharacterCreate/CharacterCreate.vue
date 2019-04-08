@@ -11,5 +11,4 @@
     </div>
 </template>
 
-<script src="./CharacterCreate.js"></script>
 <style src="./CharacterCreate.less" lang="less"></style>

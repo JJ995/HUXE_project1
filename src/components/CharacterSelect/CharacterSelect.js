@@ -23,10 +23,8 @@ export default {
                                     }]
                                 })
                                 {
-                                    email,
-                                    name,
-                                    class,
-                                    race
+                                    id,
+                                    name
                                 }
                             }`,
             variables () {
@@ -35,8 +33,5 @@ export default {
                 }
             },
         }
-    },
-    methods: {
-
     }
 }

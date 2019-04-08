@@ -4,11 +4,13 @@
         <div class="spinner" :class="{'spinner--hidden': !loading}"></div>
         <ul class="character-select__list">
             <li v-for="(character, index) in characters" class="character-select__list-item" :key=index>
-                <button type="button"
-                        class="character-select__button border-button"
-                        :title="character.name">
-                    <div class="character-select__button-text">{{ character.name }}</div>
-                </button>
+                <router-link :to="{ name: 'viewCharacter', query: { id: character.id }}">
+                    <button type="button"
+                            class="character-select__button border-button"
+                            :title="character.name">
+                        <div class="character-select__button-text">{{ character.name }}</div>
+                    </button>
+                </router-link>
             </li>
         </ul>
         <div v-if="!loading && !characters.length"

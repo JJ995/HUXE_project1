@@ -140,6 +140,9 @@ export default {
         },
         updateAbilities () {
             this.$nextTick(function () {
+                for (let i = 1; i < this.abilityValues.length; i++) {
+                    this.abilityValues[i].disabled = false;
+                }
                 for (let i = 0; i < this.abilities.length; i++) {
                     let selection = this.$refs[this.abilities[i]][0].selectedItems[0];
                     if (selection) {
@@ -166,16 +169,18 @@ export default {
         },
         updateTotalScore () {
             for (let i = 0; i < this.selectedAbilities.length; i++) {
+                this.selectedAbilities[i].totalScore = this.selectedAbilities[i].baseScore + this.selectedAbilities[i].racialBonus;
                 this.updateModifier(i);
-                this.selectedAbilities[i].totalScore = this.selectedAbilities[i].baseScore + this.selectedAbilities[i].racialBonus + this.selectedAbilities[i].modifier;
             }
         },
         updateModifier (i) {
-            switch(this.selectedAbilities[i].baseScore) {
+            switch(this.selectedAbilities[i].totalScore) {
                 case 8:
+                case 9:
                     this.selectedAbilities[i].modifier = -1;
                     break;
                 case 10:
+                case 11:
                     this.selectedAbilities[i].modifier = 0;
                     break;
                 case 12:
@@ -185,6 +190,10 @@ export default {
                 case 14:
                 case 15:
                     this.selectedAbilities[i].modifier = 2;
+                    break;
+                case 16:
+                case 17:
+                    this.selectedAbilities[i].modifier = 3;
                     break;
                 default:
                     this.selectedAbilities[i].modifier = 0;
@@ -207,9 +216,12 @@ export default {
             }
         },
         saveCharacter () {
-            let that = this;
-            this.$apollo.mutate({
-                mutation: gql`
+            // Check if character name was entered
+            if (this.characterName.trim() !== '') {
+                // Save character
+                let that = this;
+                this.$apollo.mutate({
+                    mutation: gql`
                     mutation CreateCharacterMutation($email: String!, $name: String!, $race: String!, $class: String!, $strength: Int!, $dexterity: Int!, $constitution: Int!, $intelligence: Int!, $wisdom: Int!, $charisma: Int!) {
                         createCharacter(
                             data: {
@@ -226,23 +238,29 @@ export default {
                                 charisma: $charisma
                             }
                         ) {
-                            name
+                            id
                         }
                     }
                 `,
-                variables: {
-                    email: that.$auth.profile.email,
-                    name: that.characterName,
-                    race: that.selectedRace.name,
-                    class: that.selectedClass.name,
-                    strength: that.selectedAbilities[0].totalScore,
-                    dexterity: that.selectedAbilities[1].totalScore,
-                    constitution: that.selectedAbilities[2].totalScore,
-                    intelligence: that.selectedAbilities[3].totalScore,
-                    wisdom: that.selectedAbilities[4].totalScore,
-                    charisma: that.selectedAbilities[5].totalScore
-                }
-            });
+                    variables: {
+                        email: that.$auth.profile.email,
+                        name: that.characterName,
+                        race: that.selectedRace.name,
+                        class: that.selectedClass.name,
+                        strength: that.selectedAbilities[0].totalScore,
+                        dexterity: that.selectedAbilities[1].totalScore,
+                        constitution: that.selectedAbilities[2].totalScore,
+                        intelligence: that.selectedAbilities[3].totalScore,
+                        wisdom: that.selectedAbilities[4].totalScore,
+                        charisma: that.selectedAbilities[5].totalScore
+                    }
+                }).then((result) => {
+                    // Redirect to character page
+                    this.$router.push({ name: 'viewCharacter', query: { id: result.data.createCharacter.id }});
+                });
+            } else {
+                this.$refs.characterName.$el.getElementsByTagName('input')[0].focus();
+            }
         }
     }
 }

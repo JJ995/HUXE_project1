@@ -1,6 +1,6 @@
 <template>
     <footer class="footer">
-        <p>This is the footer</p>
+        <p>&copy; Jakob Januschkowetz &amp; Daniel Dietrich</p>
     </footer>
 </template>
 

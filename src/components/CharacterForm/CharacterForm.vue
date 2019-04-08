@@ -128,7 +128,7 @@
                                     <div class="character-form__ability-name">{{ ability.name }}</div>
                                     Total Score: <span class="character-form__ability-value">{{ ability.totalScore }}</span><br />
                                     Base Score: <span class="character-form__ability-value">{{ ability.baseScore }}</span><br />
-                                    Modifier: <span class="character-form__ability-value">{{ ability.modifier }}</span><br />
+                                    Modifier: <span class="character-form__ability-value">{{ ability.modifier > 0 ? '+' + ability.modifier : ability.modifier }}</span><br />
                                     Racial Bonus: <span class="character-form__ability-value">+{{ ability.racialBonus }}</span><br />
                                 </div>
                             </div>
@@ -156,7 +156,8 @@
                                 <v-text-field
                                     label="Please enter a name for your character:"
                                     placeholder="Name"
-                                    v-model="characterName"></v-text-field>
+                                    v-model="characterName"
+                                    ref="characterName"></v-text-field>
                             </div>
                             <!-- END Form step four -->
 
